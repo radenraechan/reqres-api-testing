@@ -21,8 +21,8 @@ public class Get {
     }
 
     @Step("I receive valid HTTP response")
-    public void validateHttpResponseCode200() {
-        restAssuredThat(response -> response.statusCode(200));
+    public void validateHttpResponseCode(int code) {
+        restAssuredThat(response -> response.statusCode(code));
     }
 
     @Step("I receive valid data for detail user")
@@ -30,4 +30,21 @@ public class Get {
         restAssuredThat(response -> response.body("'data'.'id'", equalTo(2)));
         restAssuredThat(response -> response.body("'data'.'first_name'", equalTo("Janet")));
     }
+
+    @Step("I set invalid GET api endpoints")
+    public String setInvalidApiEndpoint() {
+        return url + "users/x";
+    }
+
+    @Step("I send invalid GET HTTP request")
+    public void sendInvalidGetHttpRequest() {
+        SerenityRest.given().get(setInvalidApiEndpoint());
+    }
+
+    @Step("I don't receive valid data for detail user")
+    public void validateInvalidDataDetailUser() {
+        restAssuredThat(response -> response.body("'data'.'id'", equalTo(null)));
+        restAssuredThat(response -> response.body("'data'.'first_name'", equalTo(null)));
+    }
+
 }

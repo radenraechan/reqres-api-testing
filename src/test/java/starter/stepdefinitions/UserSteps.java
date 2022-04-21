@@ -24,11 +24,31 @@ public class UserSteps {
 
     @Then("I receive valid HTTP response code {int}")
     public void iReceiveValidHTTPResponseCode(int arg0) {
-        get.validateHttpResponseCode200();
+        get.validateHttpResponseCode(arg0);
     }
 
     @And("I receive valid data for detail user")
     public void iReceiveValidDataForDetailUser() {
         get.validateDataDetailUser();
+    }
+
+    @Given("I set invalid GET api endpoints")
+    public void iSetInvalidGETApiEndpoints() {
+        get.setInvalidApiEndpoint();
+    }
+
+    @When("I send invalid GET HTTP request")
+    public void iSendInvalidGETHTTPRequest() {
+        get.sendInvalidGetHttpRequest();
+    }
+
+    @Then("I don't receive valid HTTP response code {int}")
+    public void iDonTReceiveValidHTTPResponseCode(int arg0) {
+        get.validateHttpResponseCode(arg0);
+    }
+
+    @And("I don't receive valid data for detail user")
+    public void iDonTReceiveValidDataForDetailUser() {
+        get.validateInvalidDataDetailUser();
     }
 }
