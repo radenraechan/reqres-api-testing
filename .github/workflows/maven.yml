@@ -20,5 +20,11 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package
-      - name: Test API
+
+    test:
+      name: Test API Automation
+      need: build
+      runs-on: ubuntu-latest
+      steps:
+        name: Test API
         run: mvn clean verify
