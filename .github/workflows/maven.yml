@@ -23,6 +23,7 @@ jobs:
 
   test:
     name: Test API Automation
+    needs: Build
     runs-on: ubuntu-latest
     steps:
       - name: Test API
