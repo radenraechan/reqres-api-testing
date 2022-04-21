@@ -41,6 +41,11 @@ public class Get {
         SerenityRest.given().get(setInvalidApiEndpoint());
     }
 
+    @Step("I don't receive valid HTTP response")
+    public void validateInvalidHttpResponseCode(int code) {
+        restAssuredThat(response -> response.statusCode(code));
+    }
+
     @Step("I don't receive valid data for detail user")
     public void validateInvalidDataDetailUser() {
         restAssuredThat(response -> response.body("'data'.'id'", equalTo(null)));

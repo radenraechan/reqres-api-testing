@@ -44,7 +44,7 @@ public class UserSteps {
 
     @Then("I don't receive valid HTTP response code {int}")
     public void iDonTReceiveValidHTTPResponseCode(int arg0) {
-        get.validateHttpResponseCode(arg0);
+        get.validateInvalidHttpResponseCode(arg0);
     }
 
     @And("I don't receive valid data for detail user")

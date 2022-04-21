@@ -12,5 +12,5 @@ Feature: User
   Scenario: GET - As admin I have be disable to get detail user
     Given I set invalid GET api endpoints
     When I send invalid GET HTTP request
-    Then I don't receive valid HTTP response code 200
+    Then I don't receive valid HTTP response code 404
     And I don't receive valid data for detail user
